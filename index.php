@@ -36,7 +36,7 @@ if (isset($update->message->text)) {
 
         $telegram->sendMessage($chatId, $menuMessage);
     } elseif ($text === '/url') {
-        $menuMessage = "https://www.google.com";
+        $menuMessage = " https://www.udemy.com/course/whatsapp-api-con-nodejs-envio-y-recepcion-de-mensajes/?couponCode=02OCT23";
 
         $telegram->sendMessage($chatId, $menuMessage,'HTML');
     } elseif ($text === '1') {
