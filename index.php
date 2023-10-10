@@ -41,16 +41,22 @@ if (isset($update->message->text)) {
         $keyboard = new InlineKeyboardMarkup(
             [
                 [
-                    ['text' => 'link', 'url' => 'https://core.telegram.org']
+                    [
+                        'text' => 'Ir',
+                        'url' => 'https://core.telegram.org'
+                    ],
+                    [
+                        'text' => 'Web',
+                        'url' => 'https://anderson-bastidas.com'
+                    ]
                 ]
             ]
         );
 
-        $telegram->sendMessage($chatId, "test", null, false, null, $keyboard);
+        $thumbnailPath = 'assets/img.png';
+        $telegram->sendPhoto($chatId,new CURLFile($thumbnailPath));
 
-        /* $menuMessage = " https://www.udemy.com/course/whatsapp-api-con-nodejs-envio-y-recepcion-de-mensajes/?couponCode=02OCT23";
-
-        $telegram->sendMessage($chatId, $menuMessage,'HTML'); */
+        $telegram->sendMessage($chatId, "Nombre del Curso", null, false, null, $keyboard);
     } elseif ($text === '1') {
         // Responde con el menú de opciones
         $menuMessage = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
