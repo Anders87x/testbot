@@ -1,7 +1,6 @@
 <?php
 require_once 'include/vendor/autoload.php';
 
-use TelegramBot\Api;
 use TelegramBot\Api\BotApi;
 
 // Configura el token de acceso de tu bot
@@ -37,23 +36,16 @@ if (isset($update->message->text)) {
 
         $telegram->sendMessage($chatId, $menuMessage);
     } elseif ($text === '/url') {
-        // Crea un array con los botones en línea
-        $inlineKeyboard = [
-            [
-                ['text' => 'Ir al curso', 'url' => 'www.google.com'],
-                ['text' => 'Visitar mi sitio web', 'url' => 'www.google.com'],
-            ],
-        ];
-
-        // Convierte el array en formato JSON
-        $inlineKeyboard = json_encode(['inline_keyboard' => $inlineKeyboard]);
-
-        // Configura el mensaje con el teclado personalizado
+        // Configura el mensaje con los enlaces simulados como botones en línea
         $message = 'Elige una opción:';
+        $message .= "\n[1] [Ir al curso](www.google.com)";
+        $message .= "\n[2] [Visitar mi sitio web](anderson-bastidas.com)";
+
+        // Envia el mensaje con los enlaces simulados como botones en línea
         $telegram->sendMessage(
             $chatId,
             $message,
-            $inlineKeyboard
+            'Markdown' // Esto permite que los enlaces se activen
         );
     } elseif ($text === '1') {
         // Responde con el menú de opciones
