@@ -36,6 +36,15 @@ if (isset($update->message->text)) {
         $menuMessage .= "7️⃣. Horario de Atención. 🕜\n";
 
         $telegram->sendMessage($chatId, $menuMessage);
+    } elseif (preg_match('/^\/dni (\d+)$/', $text, $matches)) {
+        // Maneja el comando /dni seguido de números
+        $numeroDNI = $matches[1];
+
+        // Realiza alguna acción con el número de DNI, por ejemplo, consulta una base de datos
+        // y luego responde con la información relevante
+        $response = "Consultando información para el DNI: $numeroDNI"; // Reemplaza con tu lógica
+
+        $telegram->sendMessage($chatId, $response);
     } elseif ($text === '/url') {
 
         $keyboard = new InlineKeyboardMarkup(
@@ -62,6 +71,7 @@ if (isset($update->message->text)) {
         $menuMessage = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
 
         $telegram->sendMessage($chatId, $menuMessage);
+
     } elseif ($text === '2') {
         // Define las coordenadas de latitud y longitud
         $latitude = 51.5074; // Cambia esto a la latitud deseada
