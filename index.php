@@ -2,7 +2,6 @@
 require_once 'include/vendor/autoload.php';
 
 use TelegramBot\Api\BotApi;
-use TelegramBot\Api\Types\Inline\InlineKeyboardMarkup;
 
 // Configura el token de acceso de tu bot
 $telegram = new BotApi('6453602379:AAErcIb-8BsVIe8MvlJ5yPRwg9rHqZEozPk');
