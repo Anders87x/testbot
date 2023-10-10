@@ -40,8 +40,8 @@ if (isset($update->message->text)) {
         // Crea un array con los botones en línea
         $inlineKeyboard = [
             [
-                ['text' => 'Ir al curso', 'url' => 'URL_DEL_CURSO'],
-                ['text' => 'Visitar mi sitio web', 'url' => 'URL_DE_TU_SITIO_WEB'],
+                ['text' => 'Ir al curso', 'url' => 'www.google.com'],
+                ['text' => 'Visitar mi sitio web', 'url' => 'www.google.com'],
             ],
         ];
 
