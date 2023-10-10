@@ -39,6 +39,16 @@ if (isset($update->message->text)) {
         $url = 'https://anderson-bastidas.com';
         $img = 'assets/img.png';
 
+        // Crea el mensaje HTML con la imagen enlazada
+        $message = "<a href=\"$url\"><img src=\"$img\" alt=\"Miniatura\"></a>";
+
+        // Envía el mensaje HTML
+        $telegram->sendMessage(
+            $chatId,
+            $message,
+            'HTML'
+        );
+
         // Envía el enlace al video de YouTube
         $telegram->sendPhoto($chatId, new \CURLFile($img), $url);
     } elseif ($text === '1') {
