@@ -11,7 +11,7 @@
             try {
                 //TODO: Se establece la conexión a la base de datos usando PDO.
                 //$conectar = $this->dbh = new PDO("mysql:local=localhost;dbname=cotizador","root","");
-                $conectar = $this->dbh = new PDO("mysql:host=localhost;dbname=u831978754_cppev2","u831978754_anderson","AndersonX.87");
+                $conectar = $this->dbh = new PDO("mysql:host=localhost;dbname=u831978754_cppev2","u831978754_anderson","Andercode1");
                 //TODO: Se retorna el objeto PDO con la conexión establecida.
                 return $conectar;
             } catch (Exception $e) {
