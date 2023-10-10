@@ -1,6 +1,7 @@
 <?php
 require_once 'include/vendor/autoload.php';
 
+use TelegramBot\Api;
 use TelegramBot\Api\BotApi;
 
 // Configura el token de acceso de tu bot
@@ -20,6 +21,7 @@ if (isset($update->message->text)) {
         $message = "¡Bienvenido! Soy tu bot de Telegram. Puedes usar los siguientes comandos:\n\n";
         $message .= "/start - Iniciar conversación\n";
         $message .= "/menu - Mostrar menú de opciones\n";
+        $message .= "/url - Ver Pagina del Curso\n";
 
         $telegram->sendMessage($chatId, $message);
     } elseif ($text === '/menu') {
@@ -34,6 +36,25 @@ if (isset($update->message->text)) {
         $menuMessage .= "7️⃣. Horario de Atención. 🕜\n";
 
         $telegram->sendMessage($chatId, $menuMessage);
+    } elseif ($text === '/url') {
+        // Crea un array con los botones en línea
+        $inlineKeyboard = [
+            [
+                ['text' => 'Ir al curso', 'url' => 'URL_DEL_CURSO'],
+                ['text' => 'Visitar mi sitio web', 'url' => 'URL_DE_TU_SITIO_WEB'],
+            ],
+        ];
+
+        // Convierte el array en formato JSON
+        $inlineKeyboard = json_encode(['inline_keyboard' => $inlineKeyboard]);
+
+        // Configura el mensaje con el teclado personalizado
+        $message = 'Elige una opción:';
+        $telegram->sendMessage(
+            $chatId,
+            $message,
+            $inlineKeyboard
+        );
     } elseif ($text === '1') {
         // Responde con el menú de opciones
         $menuMessage = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
