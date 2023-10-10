@@ -49,7 +49,7 @@ if (isset($update->message->text)) {
         $telegram->sendLocation($chatId, $latitude, $longitude);
     } elseif ($text === '3') {
         // Ruta al archivo PDF que deseas enviar
-        $pdfFilePath = 'http://s29.q4cdn.com/175625835/files/doc_downloads/test.pdf'; // Reemplaza con la ruta de tu archivo PDF
+        $pdfFilePath = 'assets/test.pdf'; // Reemplaza con la ruta de tu archivo PDF
 
         // Envía el archivo PDF al usuario
         $telegram->sendDocument($chatId, new \CURLFile(realpath($pdfFilePath)));
