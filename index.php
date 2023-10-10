@@ -37,21 +37,11 @@ if (isset($update->message->text)) {
 
         $telegram->sendMessage($chatId, $menuMessage);
     } elseif ($text === '/url') {
-        // Crea el teclado personalizado con botones en línea
-        $keyboard = [
-            [['text' => 'Ir al curso', 'url' => 'URL_DEL_CURSO']],
-            [['text' => 'Visitar mi sitio web', 'url' => 'URL_DE_TU_SITIO_WEB']],
-        ];
+        // Enlace al video de YouTube
+        $url = 'https://anderson-bastidas.com'; // Reemplaza VIDEO_ID con el ID del video de YouTube
 
-        // Configura el mensaje con el teclado personalizado
-        $message = 'Elige una opción:';
-        $inlineKeyboard = new InlineKeyboardMarkup($keyboard);
-        
-        $telegram->sendMessage(
-            $chatId,
-            $message,
-            $inlineKeyboard
-        );
+        // Envía el enlace al video de YouTube
+        $telegram->sendPhoto($chatId, $url);
     } elseif ($text === '1') {
         // Responde con el menú de opciones
         $menuMessage = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
