@@ -2,6 +2,7 @@
 require_once 'include/vendor/autoload.php';
 
 use TelegramBot\Api\BotApi;
+use TelegramBot\Api\Types\Inline\InlineKeyboardMarkup;
 
 // Configura el token de acceso de tu bot
 $telegram = new BotApi('6453602379:AAErcIb-8BsVIe8MvlJ5yPRwg9rHqZEozPk');
@@ -36,24 +37,17 @@ if (isset($update->message->text)) {
 
         $telegram->sendMessage($chatId, $menuMessage);
     } elseif ($text === '/url') {
-        $keyboard = json_encode([
-            "inline_keyboard" => [
+
+        $keyboard = new InlineKeyboardMarkup(
+            [
                 [
-                    [
-                        "text" => "✅ ADMINPAGE ✅",
-                        "url" => "https://example.com/admin"
-                    ],
-
-                    [
-                        "text" => "❌ HOMEPAGE ❌",
-                        "url" => "https://example.commin"
-                    ],
-
+                    ['text' => 'link', 'url' => 'https://core.telegram.org']
                 ]
             ]
-        ]);
+        );
 
-        $telegram->sendMessage($chatId, "Prueba",null, false, null, $keyboard);
+        $telegram->sendMessage($chatId, "test", null, false, null, $keyboard);
+
         /* $menuMessage = " https://www.udemy.com/course/whatsapp-api-con-nodejs-envio-y-recepcion-de-mensajes/?couponCode=02OCT23";
 
         $telegram->sendMessage($chatId, $menuMessage,'HTML'); */
