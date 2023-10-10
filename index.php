@@ -1,8 +1,8 @@
 <?php
 require_once 'include/vendor/autoload.php';
 
-require_once("../config/conexion.php");
-require_once("../models/Profesor.php");
+require_once("config/conexion.php");
+require_once("models/Profesor.php");
 
 use TelegramBot\Api\BotApi;
 use TelegramBot\Api\Types\Inline\InlineKeyboardMarkup;
