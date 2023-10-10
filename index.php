@@ -57,6 +57,16 @@ if (isset($update->message->text)) {
         // Puedes incluir un mensaje opcional junto con el archivo PDF
         $message = "Aquí tienes el archivo PDF que solicitaste.";
         $telegram->sendMessage($chatId, $message);
+    } elseif ($text === '4') {
+        // Ruta al archivo de audio que deseas enviar
+        $audioFilePath = 'assets/sample1.mp3'; // Reemplaza con la ruta de tu archivo de audio
+
+        // Envía el archivo de audio al usuario
+        $telegram->sendAudio($chatId, new \CURLFile(realpath($audioFilePath)));
+
+        // Puedes incluir un mensaje opcional junto con el archivo de audio
+        $message = "Aquí tienes el archivo de audio que solicitaste.";
+        $telegram->sendMessage($chatId, $message);
     } else {
         // Si el mensaje no coincide con ningún comando, responde con un mensaje predeterminado
         $defaultMessage = "No entiendo ese comando. Puedes usar /start para iniciar o /menu para ver el menú.";
