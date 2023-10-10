@@ -41,12 +41,12 @@ if (isset($update->message->text)) {
                 [
                     [
                         "text" => "✅ ADMINPAGE ✅",
-                        "callback_data" => "callbackone"
+                        "url" => "https://example.com/admin"
                     ],
 
                     [
                         "text" => "❌ HOMEPAGE ❌",
-                        "callback_data" => "callbacktwo"
+                        "url" => "https://example.commin"
                     ],
 
                 ]
