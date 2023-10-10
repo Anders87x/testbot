@@ -53,7 +53,7 @@ if (isset($update->message->text)) {
             ]
         ]);
 
-        $telegram->sendMessage($chatId, $menuMessage, $replyMarkup = $keyboard);
+        $telegram->sendMessage($chatId, "a", $replyMarkup = $keyboard);
 
 
         /* $menuMessage = " https://www.udemy.com/course/whatsapp-api-con-nodejs-envio-y-recepcion-de-mensajes/?couponCode=02OCT23";
