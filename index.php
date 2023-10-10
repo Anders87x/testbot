@@ -1,6 +1,9 @@
 <?php
 require_once 'include/vendor/autoload.php';
 
+require_once("../config/conexion.php");
+require_once("../models/Profesor.php");
+
 use TelegramBot\Api\BotApi;
 use TelegramBot\Api\Types\Inline\InlineKeyboardMarkup;
 
@@ -45,6 +48,24 @@ if (isset($update->message->text)) {
         $response = "Consultando información para el DNI: $numeroDNI"; // Reemplaza con tu lógica
 
         $telegram->sendMessage($chatId, $response);
+    } elseif (preg_match('/^\/dni2 (\d+)$/', $text, $matches)) {
+        // Maneja el comando /dni seguido de números
+        $numeroDNI2 = $matches[1];
+
+        $profesor = new Profesor();
+        $datos = $profesor->buscar_profesor_x_dni($numeroDNI2);
+        if(is_array($datos)==true and count($datos)>0){
+            foreach ($datos as $row){
+                $respuesta = "Aquí el resultado:\n";
+                $respuesta .= "Nombres: ".$row["pro_nom"]."\n";
+                $respuesta .= "Ape.Materno: ".$row["pro_apep"]."\n";
+                $respuesta .= "Ape.Paterno: ".$row["pro_apem"]."\n";
+            }
+        }else{
+            $respuesta = "No se encontro información.";
+        }
+
+        $telegram->sendMessage($chatId, $respuesta);
     } elseif ($text === '/url') {
 
         $keyboard = new InlineKeyboardMarkup(
