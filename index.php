@@ -25,13 +25,13 @@ if (isset($update->message->text)) {
     } elseif ($text === '/menu') {
         // Responde con el menú de opciones
         $menuMessage = "Aquí está el menú de opciones:\n";
-        $menuMessage .= "1. Informacion del Curso 1\n";
-        $menuMessage .= "2. Ubicacion del local 2\n";
-        $menuMessage .= "3. Enviar Temario en PDF 3\n";
-        $menuMessage .= "4. Enviar Audio Explicando el curso 4\n";
-        $menuMessage .= "5. Video de Introduccion 5\n";
-        $menuMessage .= "6. Hablar con AnderCode 6\n";
-        $menuMessage .= "7. Horario de Atencion 7\n";
+        $menuMessage .= "1️⃣. Información del Curso. ❔\n";
+        $menuMessage .= "2️⃣. Ubicación del local. 📍\n";
+        $menuMessage .= "3️⃣. Enviar temario en pdf. 📄\n";
+        $menuMessage .= "4️⃣. Audio explicando curso. 🎧\n";
+        $menuMessage .= "5️⃣. Video de Introducción. ⏯️\n";
+        $menuMessage .= "6️⃣. Hablar con AnderCode. 🙋‍♂️\n";
+        $menuMessage .= "7️⃣. Horario de Atención. 🕜\n";
 
         $telegram->sendMessage($chatId, $menuMessage);
     } elseif ($text === '1') {
@@ -39,7 +39,6 @@ if (isset($update->message->text)) {
         $menuMessage = "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.";
 
         $telegram->sendMessage($chatId, $menuMessage);
-
     } elseif ($text === '2') {
         // Define las coordenadas de latitud y longitud
         $latitude = 51.5074; // Cambia esto a la latitud deseada
@@ -67,6 +66,22 @@ if (isset($update->message->text)) {
         // Puedes incluir un mensaje opcional junto con el archivo de audio
         $message = "Aquí tienes el archivo de audio que solicitaste.";
         $telegram->sendMessage($chatId, $message);
+    } elseif ($text === '5') {
+        // Enlace al video de YouTube
+        $youtubeVideoUrl = 'https://youtu.be/OL63dvaqyTY'; // Reemplaza VIDEO_ID con el ID del video de YouTube
+
+        // Envía el enlace al video de YouTube
+        $telegram->sendMessage($chatId, $youtubeVideoUrl);
+    } elseif ($text === '6') {
+         // Responde con el menú de opciones
+         $menuMessage = "🤝 En breve me pondré en contacto contigo. 🤓";
+
+         $telegram->sendMessage($chatId, $menuMessage);
+    } elseif ($text === '7') {
+        // Responde con el menú de opciones
+        $menuMessage = "📅 Horario de Atención: Lunes a Viernes. \n🕜 Horario: 9:00 a.m. a 5:00 p.m. 🤓";
+
+        $telegram->sendMessage($chatId, $menuMessage);
     } else {
         // Si el mensaje no coincide con ningún comando, responde con un mensaje predeterminado
         $defaultMessage = "No entiendo ese comando. Puedes usar /start para iniciar o /menu para ver el menú.";
