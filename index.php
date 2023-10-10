@@ -36,16 +36,23 @@ if (isset($update->message->text)) {
 
         $telegram->sendMessage($chatId, $menuMessage);
     } elseif ($text === '/url') {
-        // Configura el mensaje con los enlaces simulados como botones en línea
+         // Configura el mensaje con botones simulados en formato HTML
         $message = 'Elige una opción:';
-        $message .= "\n[1] [Ir al curso](www.google.com)";
-        $message .= "\n[2] [Visitar mi sitio web](anderson-bastidas.com)";
+        $message .= "\n<a href='www.google.com'>Ir al curso</a>";
+        $message .= "\n<a href='anderson-bastidas.com'>Visitar mi sitio web</a>";
 
-        // Envia el mensaje con los enlaces simulados como botones en línea
+        // Envia el mensaje con botones simulados en formato HTML
         $telegram->sendMessage(
             $chatId,
             $message,
-            'Markdown' // Esto permite que los enlaces se activen
+            'HTML', // Esto permite que los enlaces se muestren como botones
+            false,
+            null,
+            null,
+            false,
+            null,
+            null,
+            null
         );
     } elseif ($text === '1') {
         // Responde con el menú de opciones
